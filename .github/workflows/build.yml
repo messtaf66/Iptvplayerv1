@@ -16,6 +16,10 @@ jobs:
           mkdir project
           unzip IptvPlayerV1.zip -d project
 
+      - name: Configure AndroidX
+        run: |
+          cp gradle.properties project/gradle.properties
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
