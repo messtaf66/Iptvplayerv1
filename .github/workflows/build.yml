@@ -19,7 +19,29 @@ jobs:
       - name: Configure AndroidX
         run: |
           cp gradle.properties project/gradle.properties
+      - name: Configure JVM target
+        run: |
+          python3 - <<'PY'
+          p = "project/app/build.gradle.kts"
+          s = open(p).read()
+          s = s.replace(
+              'android {',
+              '''android {
+              compileOptions {
+                  sourceCompatibility = JavaVersion.VERSION_17
+                  targetCompatibility = JavaVersion.VERSION_17
+              }'''
+          )
+          s = s.replace(
+              'dependencies {',
+              '''kotlin {
+              jvmToolchain(17)
+          }
 
+          dependencies {'''
+          )
+          open(p, "w").write(s)
+          PY
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
