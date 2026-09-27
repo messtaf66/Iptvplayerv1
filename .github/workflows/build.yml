@@ -1,4 +1,4 @@
-name: Build TvMax V4 APK
+name: Build TvMax V5 APK
 
 on:
   workflow_dispatch:
@@ -17,7 +17,7 @@ jobs:
       - name: Extract project
         run: |
           mkdir project
-          unzip TvMaxV4.zip -d project
+          unzip TvMaxV5.zip -d project
 
       - name: Configure AndroidX
         run: |
@@ -73,5 +73,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: TvMax-V4-APK
+          name: TvMax-V5-APK
           path: project/app/build/outputs/apk/debug/app-debug.apk
