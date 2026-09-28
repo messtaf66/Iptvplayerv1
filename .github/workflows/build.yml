@@ -1,4 +1,4 @@
-name: Build TvMax V9 APK
+name: Build TvMax clean APK
 
 on:
   workflow_dispatch:
@@ -17,7 +17,7 @@ jobs:
       - name: Extract project
         run: |
           mkdir project
-          unzip TvMaxV9.zip -d project
+          unzip TvMaxclean.zip -d project
 
       - name: Configure AndroidX
         run: |
@@ -73,5 +73,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: TvMax-V9-APK
+          name: TvMax-clean-APK
           path: project/app/build/outputs/apk/debug/app-debug.apk
